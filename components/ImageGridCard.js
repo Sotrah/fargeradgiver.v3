@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image';
-import CloudinaryWrapper from "../components/cloudinarywrapper";
+import CloudinaryWrapper from "./CldImage";
 import { useState } from 'react';
 import UploadButton from "../components/UploadButton";
 
