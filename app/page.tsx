@@ -2,10 +2,9 @@
 import CldImage from "../components/CldImage";
 import ColorPicker from "../components/ColorPicker";
 import ImageGridCard from "../components/ImageGridCard";
-import { TailSpin } from "react-loader-spinner";
-
-
-import { useState } from "react";
+import ScaleLoader from "react-spinners/ScaleLoader";
+import { useSpinDelay } from 'spin-delay';
+import { useState, useEffect } from "react";
 
 export default function Home() {
   // type ImageToTransform = {
@@ -20,6 +19,7 @@ export default function Home() {
 
   const [visibleModule, setVisibleModule] = useState("modul2");
   const [loading, setLoading] = useState(false);
+
   const [imageToTransform, setImageToTransform] = useState<String | null>('http://res.cloudinary.com/dj6mfsxnu/image/upload/v1707474684/jgxom27mvriax5av0prr.png');
   const [color, setColor] = useState<Color | null>(null);
 
@@ -30,8 +30,9 @@ export default function Home() {
   const handleColorSelect = (selectedColor: Color | null) => {
     setLoading(true);
     setColor(selectedColor)
-    
   }
+
+  const showSpinner = useSpinDelay(loading, { delay: 300, minDuration: 700 });
 
   return (
       <main className="flex min-h-screen min-w-full flex-col items-center justify-between p-6">
@@ -79,11 +80,8 @@ export default function Home() {
             <div className="lg:w-1/3 w-full lg:order-2 order-1 px-2 mb-4">
               <div className="relative pb-[100%]">
                 <div className="absolute top-0 left-0 right-0 bottom-0 bg-white rounded-lg shadow  overflow-hidden">
-                  
-                  <div className="w-full h-full">
-                    {loading && (
-                      <TailSpin color="black" radius={"8px"} />
-                      )}
+                  {/* The below section is NOT hidden until the image is loaded, but it could be! */}
+                  <div className={`${showSpinner ? "opacity-50" : ""} w-full h-full`}>
                     {/* CldImage is documented here: https://next.cloudinary.dev/cldimage/configuration
                     
                     If there is an image and a color selected, transform it with Recolor */}
@@ -115,10 +113,16 @@ export default function Home() {
 
                   </div>
                 </div>
+                <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
+                <ScaleLoader
+                  color="#000000"
+                  speedMultiplier={0.5}
+                  loading={showSpinner}
+                />
+                </div>
               </div>
+              
             </div>
-
-
           </div>
         </div>
       </main>
