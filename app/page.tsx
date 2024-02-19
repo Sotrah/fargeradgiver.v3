@@ -1,12 +1,13 @@
 "use client";
-import CloudinaryWrapper from "../components/cloudinarywrapper";
+import CldImage from "../components/CldImage";
 import ColorPicker from "../components/ColorPicker";
 import ImageGridCard from "../components/ImageGridCard";
-
-import React, { useState } from "react";
+import ScaleLoader from "react-spinners/ScaleLoader";
+import { useSpinDelay } from 'spin-delay';
+import React, { useState, useEffect } from "react";
 
 export default function Home() {
-  // type CloudinaryResult = {
+  // type ImageToTransform = {
   //   width: number;
   //   height: number;
   //   public_id: string;
@@ -17,9 +18,21 @@ export default function Home() {
   }
 
   const [visibleModule, setVisibleModule] = useState("modul2");
+  const [loading, setLoading] = useState(false);
 
-  const [cloudinaryResult, setCloudinaryResult] = useState<String | null>('http://res.cloudinary.com/dj6mfsxnu/image/upload/v1707474684/jgxom27mvriax5av0prr.png');
+  const [imageToTransform, setImageToTransform] = useState<String | null>('http://res.cloudinary.com/dj6mfsxnu/image/upload/v1707474684/jgxom27mvriax5av0prr.png');
   const [color, setColor] = useState<Color | null>(null);
+
+  const handleImageSelect = (selectedPicture: String) => {
+      setLoading(true);
+      setImageToTransform(selectedPicture)
+  }
+  const handleColorSelect = (selectedColor: Color | null) => {
+    setLoading(true);
+    setColor(selectedColor)
+  }
+
+  const showSpinner = useSpinDelay(loading, { delay: 300, minDuration: 700 });
 
   return (
       <body className="new-style page-proxiedContentWrapper pageType-ContentPage template-pages-layout-landingLayout2Page pageLabel-proxiedContentWrapper smartedit-page-uid-proxiedContentWrapper smartedit-page-uuid-eyJpdGVtSWQiOiJwcm94aWVkQ29udGVudFdyYXBwZXIiLCJjYXRhbG9nSWQiOiJjbkNvbnRlbnRDYXRhbG9nIiwiY2F0YWxvZ1ZlcnNpb24iOiJPbmxpbmUifQ== smartedit-catalog-version-uuid-cnContentCatalog/Online language-no">
@@ -80,7 +93,7 @@ export default function Home() {
             <div className="lg:w-1/3 w-full lg:order-1 order-2 px-2 mb-4 bg-primary-300">
               <div className={`relative pb-[100%] ${visibleModule === "modul2" ? "" : "hidden"} lg:block`}>
                 <div className={`absolute top-0 left-0 right-0 bottom-0 bg-white rounded-lg shadow p-4 overflow-hidden`} >
-                  <ImageGridCard onPictureSelect={(selectedPicture: String) => setCloudinaryResult(selectedPicture)}/>
+                  <ImageGridCard onPictureSelect={handleImageSelect}/>
                 </div>
               </div>
             </div>
@@ -90,7 +103,7 @@ export default function Home() {
               <div className={`relative pb-[100%] ${visibleModule === "modul3" ? "" : "hidden"} lg:block`}>
                 <div className={`absolute top-0 left-0 right-0 bottom-0 bg-white rounded-lg shadow p-4 overflow-hidden`}>
 
-                  <ColorPicker onColorSelect={(selectedColor: Color | null) => setColor(selectedColor)}/>
+                  <ColorPicker onColorSelect={handleColorSelect}/>
 
                 </div>
               </div>
@@ -99,24 +112,31 @@ export default function Home() {
             <div className="lg:w-1/3 w-full lg:order-2 order-1 px-2 mb-4">
               <div className="relative pb-[100%]">
                 <div className="absolute top-0 left-0 right-0 bottom-0 bg-white rounded-lg shadow  overflow-hidden">
-                  <div className="w-full h-full">
-                    {/* CloudinaryWrapper is documented here as CldImage: https://next.cloudinary.dev/cldimage/configuration*/}
-                    {cloudinaryResult && color && (
-                        <CloudinaryWrapper
+                  {/* The below section is NOT hidden until the image is loaded, but it could be! */}
+                  <div className={`${showSpinner ? "opacity-50" : ""} w-full h-full`}>
+                    {/* CldImage is documented here: https://next.cloudinary.dev/cldimage/configuration
+                    
+                    If there is an image and a color selected, transform it with Recolor */}
+                    {imageToTransform && color && (
+                        <CldImage
+                            placeholder = "empty"
+                            onLoad={() => setLoading(false)}
                             width='1024'
                             height='1024'
-                            src={cloudinaryResult}
+                            src={imageToTransform}
                             alt="Uploaded image"
                             className="rounded-lg"
                             sizes="100vw"
                             recolor={['every wall and walls and portion of wall visible in the room', color?.hex]}
                         />
                     )}
-                    {cloudinaryResult && !color && (
-                        <CloudinaryWrapper
+                    {imageToTransform && !color && (
+                        <CldImage
+                            placeholder = "empty"
+                            onLoad={() => setLoading(false)}
                             width='1024'
                             height='1024'
-                            src={cloudinaryResult}
+                            src={imageToTransform}
                             alt="Uploaded image"
                             className="rounded-lg"
                             sizes="100vw"
@@ -124,7 +144,15 @@ export default function Home() {
                     )}
                   </div>
                 </div>
+                <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
+                <ScaleLoader
+                  color="#000000"
+                  speedMultiplier={0.5}
+                  loading={showSpinner}
+                />
+                </div>
               </div>
+              
             </div>
           </div>
           <section className="lg:mt-4">
