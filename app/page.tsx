@@ -25,7 +25,7 @@ export default function Home() {
       <body className="new-style page-proxiedContentWrapper pageType-ContentPage template-pages-layout-landingLayout2Page pageLabel-proxiedContentWrapper smartedit-page-uid-proxiedContentWrapper smartedit-page-uuid-eyJpdGVtSWQiOiJwcm94aWVkQ29udGVudFdyYXBwZXIiLCJjYXRhbG9nSWQiOiJjbkNvbnRlbnRDYXRhbG9nIiwiY2F0YWxvZ1ZlcnNpb24iOiJPbmxpbmUifQ== smartedit-catalog-version-uuid-cnContentCatalog/Online language-no">
   <main className="mm-page mm-slideout bg-primary-100">
         <div className="w-full">
-          <div className="c-site-header">
+          <div className="c-site-header"> {/*Navbar opplegg*/}
             <div className="container">
               <div className="c-site-header__top text-white text-2xl">
                 <h1>Visualiseringsverktøy</h1>
@@ -39,7 +39,7 @@ export default function Home() {
                 <div className="top-0 absolute w-full h-[calc(100%-32px)] sm:h-[calc(100%-40px)] md:h-[calc(100%-56px)] bg-jernia-image">
                   <div className="relative z-10 mx-auto px-4 md:px-8 xl:container">
                      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
-                          <div className="md:col-span-10 lg:col-span-12">
+                          <div className="md:col-span-10 lg:col-span-12">{/*Info området*/}
                             <h1 className="text-3xl">Fargeradgiver</h1>
                               <div className="mt-1 md:mt-2 max-w-4xl">
                               <p className="leading-p text-p-lg-m md:text-p-lg">
@@ -127,11 +127,58 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <section></section>
+          <section className="lg:mt-4">
+            <div className="py-8 pb-0 mx-auto px-4 md:px-8 xl:container">
+              <div className="flex">
+                <div className="max-w-full flex-grow">
+                  {/* Legg til filter osv */}
+                  <div className="mb-8">
+                    <div className="mb-8 grid grid-cols-2 gap-2 md:grid-cols-3">
+
+                      <article
+                          className="group transform cursor-pointer space-y-4 rounded transition-all w-full bg-neutral-300 p-2 sm:p-4">
+                        <a href="" className="relative- flex h-full flex-col">
+                          <figure
+                              className="relative w-full aspect-square rounded overflow-hidden mb-4 bg-jernia-farge">{/*Referer til fargen her. Den er foreløpig et bg objekt i globals.css*/}
+                            <img className="w-full" alt="Fargegjengivning av undefined" src="./blob-large-gray-1.png">
+                            </img>
+                          </figure>
+                        </a>
+                      </article>
+
+                      <article
+                          className="group transform cursor-pointer space-y-4 rounded transition-all w-full bg-neutral-300 p-2 sm:p-4">
+                        <a href="" className="relative- flex h-full flex-col">
+                          <figure
+                              className="relative w-full aspect-square rounded overflow-hidden mb-4 bg-jernia-farge">{/*Referer til fargen her. Den er foreløpig et bg objekt i globals.css*/}
+                            <img className="w-full" alt="Fargegjengivning av undefined" src="./blob-large-gray-1.png">
+                            </img>
+                          </figure>
+                        </a>
+                      </article>
+
+                      <article
+                          className="group transform cursor-pointer space-y-4 rounded transition-all w-full bg-neutral-300 p-2 sm:p-4">
+                        <a href="" className="relative- flex h-full flex-col">
+                          <figure
+                              className="relative w-full aspect-square rounded overflow-hidden mb-4 bg-jernia-farge">{/*Referer til fargen her. Den er foreløpig et bg objekt i globals.css*/}
+                            <img className="w-full" alt="Fargegjengivning av undefined" src="./blob-large-gray-1.png">
+                            </img>
+                          </figure>
+                        </a>
+                      </article>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
 
         </div>
-      </main>
-  </body>
+  </main>
+      </body>
   );
 }
  

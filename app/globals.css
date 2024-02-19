@@ -76,6 +76,10 @@ body {
   font-variation-settings: normal;
   -webkit-tap-highlight-color: transparent;
 }
+.bg-jernia-farge{
+  background-color: rgb(205, 188, 148);
+}
+
 .bg-jernia-image {
   background-image: url(https://jernia-etp3ndp86-jernia.vercel.app/_next/static/media/mobile.89ded607.svg);
   background-position: right top;
