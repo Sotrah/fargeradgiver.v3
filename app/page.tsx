@@ -112,7 +112,7 @@ export default function Home() {
             <div className="lg:w-1/3 w-full lg:order-2 order-1 px-2 mb-4">
               <div className="relative pb-[100%]">
                 <div className="absolute top-0 left-0 right-0 bottom-0 bg-white rounded-lg shadow  overflow-hidden">
-                  {/* The below section is NOT hidden until the image is loaded, but it could be! */}
+                  {/* The below section is dimmed until the image is loaded */}
                   <div className={`${showSpinner ? "opacity-50" : ""} w-full h-full`}>
                     {/* CldImage is documented here: https://next.cloudinary.dev/cldimage/configuration
                     
