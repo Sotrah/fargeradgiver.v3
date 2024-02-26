@@ -36,7 +36,6 @@ export default function Home() {
 
   return (
       <body className="new-style page-proxiedContentWrapper pageType-ContentPage template-pages-layout-landingLayout2Page pageLabel-proxiedContentWrapper smartedit-page-uid-proxiedContentWrapper smartedit-page-uuid-eyJpdGVtSWQiOiJwcm94aWVkQ29udGVudFdyYXBwZXIiLCJjYXRhbG9nSWQiOiJjbkNvbnRlbnRDYXRhbG9nIiwiY2F0YWxvZ1ZlcnNpb24iOiJPbmxpbmUifQ== smartedit-catalog-version-uuid-cnContentCatalog/Online language-no">
-      <header>
         <div className="c-site-header"> {/*Navbar opplegg*/}
           <div className="container">
             <div className="c-site-header__top text-white text-2xl">
@@ -44,7 +43,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </header>
 
       <main className="main-responsive-padding px-20 mm-page mm-slideout bg-primary-100">
         <div className="w-full">
