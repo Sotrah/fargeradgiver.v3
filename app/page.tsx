@@ -1,6 +1,7 @@
 "use client";
 import CldImage from "../components/CldImage";
 import ColorPicker from "../components/ColorPicker";
+import RecentColorPicker from "../components/RecentColorPicker";
 import ImageGridCard from "../components/ImageGridCard";
 import ScaleLoader from "react-spinners/ScaleLoader";
 import { useSpinDelay } from 'spin-delay';
@@ -33,6 +34,7 @@ export default function Home() {
   }
 
   const showSpinner = useSpinDelay(loading, { delay: 300, minDuration: 700 });
+  
 
   return (
       <body className="new-style page-proxiedContentWrapper pageType-ContentPage template-pages-layout-landingLayout2Page pageLabel-proxiedContentWrapper smartedit-page-uid-proxiedContentWrapper smartedit-page-uuid-eyJpdGVtSWQiOiJwcm94aWVkQ29udGVudFdyYXBwZXIiLCJjYXRhbG9nSWQiOiJjbkNvbnRlbnRDYXRhbG9nIiwiY2F0YWxvZ1ZlcnNpb24iOiJPbmxpbmUifQ== smartedit-catalog-version-uuid-cnContentCatalog/Online language-no">
@@ -112,7 +114,6 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="lg:w-1/3 w-full lg:order-2 order-1 pt-6 px-2 mb-4">
               <div className="relative pb-[100%]">
                 <div className="absolute top-0 left-0 right-0 bottom-0 bg-white rounded-lg shadow  overflow-hidden">
                   {/* The below section is dimmed until the image is loaded */}
@@ -130,7 +131,7 @@ export default function Home() {
                             alt="Uploaded image"
                             className="rounded-lg"
                             sizes="100vw"
-                            recolor={['every wall and walls and portion of wall visible in the room', color?.hex]}
+                            recolor={['every wall and walls', color?.hex]}
                         />
                     )}
                     {imageToTransform && !color && (
