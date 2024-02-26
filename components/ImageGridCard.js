@@ -9,8 +9,8 @@ const ImageGridCard = ({ onPictureSelect }) =>  {
 
     const images = [
         'http://res.cloudinary.com/dj6mfsxnu/image/upload/v1707474684/jgxom27mvriax5av0prr.png',
-        'http://res.cloudinary.com/dj6mfsxnu/image/upload/v1707474873/kcxojtqwioosbevck11b.png',
-        'http://res.cloudinary.com/dj6mfsxnu/image/upload/v1707474934/u9sflvzgv18muozttvj9.png',
+        'https://res.cloudinary.com/dj6mfsxnu/image/upload/v1708953978/r0j1iltafpztvbssaout.jpg',
+        'https://res.cloudinary.com/dj6mfsxnu/image/upload/v1708954267/i9ff5slcnev06ckqp9oa.jpg',
 
     ];
 
