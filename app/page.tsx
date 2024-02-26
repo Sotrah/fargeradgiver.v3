@@ -112,6 +112,7 @@ export default function Home() {
               </div>
             </div>
 
+            <div className="lg:w-1/3 w-full lg:order-2 order-1 px-2 pt-6 mb-4 bg-primary-300">
               <div className="relative pb-[100%]">
                 <div className="absolute top-0 left-0 right-0 bottom-0 bg-white rounded-lg shadow  overflow-hidden">
                   {/* The below section is dimmed until the image is loaded */}
@@ -157,6 +158,8 @@ export default function Home() {
               
             </div>
           </div>
+        </div>
+
           <section className="lg:mt-4">
             <div className="py-8 pb-0 mx-auto px-4 md:px-8 xl:container">
               <div className="flex">
@@ -206,7 +209,6 @@ export default function Home() {
             </div>
           </section>
 
-        </div>
   </main>
       </body>
   );
