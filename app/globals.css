@@ -4,8 +4,9 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
+  --background-start-rgb: 246, 249, 255;
   --background-end-rgb: 255, 255, 255;
+  --dynamic-padding: calc(7vw + 4px);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -24,6 +25,11 @@ body {
           rgb(var(--background-end-rgb))
   )
   rgb(var(--background-start-rgb));
+}
+
+.main-responsive-padding{
+  padding-left: var(--dynamic-padding);
+  padding-right: var(--dynamic-padding);
 }
 
 @layer utilities {
@@ -84,15 +90,15 @@ body {
   background-image: url(https://jernia-etp3ndp86-jernia.vercel.app/_next/static/media/mobile.89ded607.svg);
   background-position: right top;
   background-repeat: no-repeat;
-  background-size: auto 350%;
+  background-size: auto 200%;
 }
 #__next .h-\[calc\(100\%-32px\)\] {
-  height: calc(100% - 32px);
+  height: 250%;
 }
 #__next .w-full {
     width: 100%;
 }
 #__next .bg-primary-100 {
   --tw-bg-opacity: 1;
-  background-color: rgb(245 249 255/var(--tw-bg-opacity));
+  background-color: rgb(245, 249, 255/var(--tw-bg-opacity));
 }
