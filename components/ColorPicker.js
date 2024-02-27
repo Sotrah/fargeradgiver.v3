@@ -30,12 +30,12 @@ const ColorPicker = ({ onColorSelect }) => {
         
     };
 
-    return (
+    return ( 
         <div className="grid grid-cols-4 gap-6">
             {colors.map((colorItem, index) => (
                 <div
                     key={index}
-                    className={`w-full rounded-lg flex items-center justify-center overflow-hidden relative border-2 ${selected?.hex === colorItem.hex ? 'border-black' : 'border-transparent'}`}
+                    className={`w-full rounded-lg flex items-center justify-center overflow-hidden relative border-2 ${selected?.hex === colorItem.hex ? 'border-black' : 'border-transparent'} hover:border-blue-500`}
                     style={{ backgroundColor: `#${colorItem.hex}`, aspectRatio: '1/1' }} // Add "#" symbol dynamically
                     onClick={() => handleColorClick(colorItem)}
                 >

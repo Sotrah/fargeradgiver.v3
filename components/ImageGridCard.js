@@ -32,7 +32,7 @@ const ImageGridCard = ({ onPictureSelect }) =>  {
             {images.map((src, index) => (
                 <div
                     key={index}
-                    className={`relative border-2 ${selected === index ? 'border-blue-700' : 'border-transparent'}`}
+                    className={`w-full rounded-lg flex items-center justify-center overflow-hidden relative border-2 ${selected === index ? 'border-black' : 'border-transparent'}  hover:border-blue-500`}
                     onClick={() => handleImageClick(index)}
                 >
                     {/* <Image src={src} alt={`Image ${index + 1}`} layout="responsive" width={50} height={50}
@@ -42,8 +42,6 @@ const ImageGridCard = ({ onPictureSelect }) =>  {
                         height={500}
                         src={src}
                         alt={`Image ${index + 1}`}
-                        className="rounded-lg"
-                        sizes="100vw"
                         layout="responsive"
                         objectFit="cover"
                     />
@@ -51,7 +49,7 @@ const ImageGridCard = ({ onPictureSelect }) =>  {
             ))}
             <div
                     key={images.length + 1}
-                    className={`relative border-2 ${selected === images.length + 1 ? 'border-blue-700' : 'border-transparent'}`}
+                    className={`relative border-2 ${selected === images.length + 1 ? 'border-black' : 'border-transparent'} rounded-lg`}
                     onClick={() => handleImageClick(index)}
                 >
                 <UploadButton onUploadSuccess={handleUploadSuccess} />
