@@ -39,7 +39,7 @@ const ColorPicker = ({ onColorSelect }) => {
                     style={{ backgroundColor: `#${colorItem.hex}`, aspectRatio: '1/1' }} // Add "#" symbol dynamically
                     onClick={() => handleColorClick(colorItem)}
                 >
-                    <span className="text-white px-1">{"#" + colorItem.hex}</span>
+                    {/* <span className="text-white px-1">{"#" + colorItem.hex}</span> */}
                 </div>
             ))}
         </div>

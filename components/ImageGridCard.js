@@ -5,7 +5,7 @@ import { useState } from 'react';
 import UploadButton from "../components/UploadButton";
 
 const ImageGridCard = ({ onPictureSelect }) =>  {
-    const [selected, setSelected] = useState(null);
+    const [selected, setSelected] = useState(0);
 
     const images = [
         'http://res.cloudinary.com/dj6mfsxnu/image/upload/v1707474684/jgxom27mvriax5av0prr.png',
