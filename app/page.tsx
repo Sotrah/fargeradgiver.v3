@@ -1,10 +1,8 @@
 "use client";
-import CloudinaryWrapper from "../components/CldImage";
 import ColorPicker from "../components/ColorPicker";
 import {ColorType} from "@/components/ColorType";
 import ImageGridCard from "../components/ImageGridCard";
 import React, { useState } from "react";
-import colourData from './../colours_dump.json';
 import {formatHexColor} from '@/components/Utils';
 import {useSpinDelay} from "spin-delay";
 import {ScaleLoader} from "react-spinners";
