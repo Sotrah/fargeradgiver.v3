@@ -1,16 +1,16 @@
 'use client'
 import Image from 'next/image';
-import CloudinaryWrapper from "../components/cloudinarywrapper";
+import CloudinaryWrapper from "./CldImage";
 import { useState } from 'react';
 import UploadButton from "../components/UploadButton";
 
 const ImageGridCard = ({ onPictureSelect }) =>  {
-    const [selected, setSelected] = useState(null);
+    const [selected, setSelected] = useState(0);
 
     const images = [
         'http://res.cloudinary.com/dj6mfsxnu/image/upload/v1707474684/jgxom27mvriax5av0prr.png',
-        'http://res.cloudinary.com/dj6mfsxnu/image/upload/v1707474873/kcxojtqwioosbevck11b.png',
-        'http://res.cloudinary.com/dj6mfsxnu/image/upload/v1707474934/u9sflvzgv18muozttvj9.png',
+        'https://res.cloudinary.com/dj6mfsxnu/image/upload/v1708953978/r0j1iltafpztvbssaout.jpg',
+        'https://res.cloudinary.com/dj6mfsxnu/image/upload/v1708954267/i9ff5slcnev06ckqp9oa.jpg',
 
     ];
 
@@ -32,7 +32,7 @@ const ImageGridCard = ({ onPictureSelect }) =>  {
             {images.map((src, index) => (
                 <div
                     key={index}
-                    className={`relative border-2 ${selected === index ? 'border-blue-700' : 'border-transparent'}`}
+                    className={`w-full rounded-lg flex items-center justify-center overflow-hidden relative border-2 ${selected === index ? 'border-black' : 'border-transparent'}  hover:border-blue-500`}
                     onClick={() => handleImageClick(index)}
                 >
                     {/* <Image src={src} alt={`Image ${index + 1}`} layout="responsive" width={50} height={50}
@@ -42,8 +42,6 @@ const ImageGridCard = ({ onPictureSelect }) =>  {
                         height={500}
                         src={src}
                         alt={`Image ${index + 1}`}
-                        className="rounded-lg"
-                        sizes="100vw"
                         layout="responsive"
                         objectFit="cover"
                     />
@@ -51,7 +49,7 @@ const ImageGridCard = ({ onPictureSelect }) =>  {
             ))}
             <div
                     key={images.length + 1}
-                    className={`relative border-2 ${selected === images.length + 1 ? 'border-blue-700' : 'border-transparent'}`}
+                    className={`relative border-2 ${selected === images.length + 1 ? 'border-black' : 'border-transparent'} rounded-lg`}
                     onClick={() => handleImageClick(index)}
                 >
                 <UploadButton onUploadSuccess={handleUploadSuccess} />
