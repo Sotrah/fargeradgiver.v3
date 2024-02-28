@@ -76,15 +76,12 @@ body {
   font-variation-settings: normal;
   -webkit-tap-highlight-color: transparent;
 }
-.bg-jernia-farge{
-  background-color: rgb(205, 188, 148);
-}
 
 .bg-jernia-image {
   background-image: url(https://jernia-etp3ndp86-jernia.vercel.app/_next/static/media/mobile.89ded607.svg);
   background-position: right top;
   background-repeat: no-repeat;
-  background-size: auto 350%;
+  background-size: auto 400px;
 }
 #__next .h-\[calc\(100\%-32px\)\] {
   height: calc(100% - 32px);
@@ -95,4 +92,16 @@ body {
 #__next .bg-primary-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(245 249 255/var(--tw-bg-opacity));
+}
+
+#__next .bg-primary-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(232 244 255/var(--tw-bg-opacity));
+}
+
+#__next .leading-p{
+  line-height: 136%;
+}
+#__next .text-p-lg-m {
+  font-size: 18px;
 }

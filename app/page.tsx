@@ -1,9 +1,12 @@
 "use client";
 import CloudinaryWrapper from "../components/cloudinarywrapper";
 import ColorPicker from "../components/ColorPicker";
+import {ColorType} from "@/components/ColorType";
 import ImageGridCard from "../components/ImageGridCard";
-
 import React, { useState } from "react";
+import colourData from './../colours_dump.json';
+import {formatHexColor} from '@/components/Utils';
+
 
 export default function Home() {
   // type CloudinaryResult = {
@@ -11,15 +14,17 @@ export default function Home() {
   //   height: number;
   //   public_id: string;
   // };
-  type Color = {
-    name: string;
-    hex: string;
-  }
 
   const [visibleModule, setVisibleModule] = useState("modul2");
 
   const [cloudinaryResult, setCloudinaryResult] = useState<String | null>('http://res.cloudinary.com/dj6mfsxnu/image/upload/v1707474684/jgxom27mvriax5av0prr.png');
-  const [color, setColor] = useState<Color | null>(null);
+  const [color, setColor] = useState<ColorType | null>(null);
+  const [displayCount, setDisplayCount] = useState(12); {/*starter med 12*/}
+
+  const formattedHex = color ? formatHexColor(color.hex) : null;
+  const handleShowMore=() => {
+    setDisplayCount(prevCount => prevCount + 12); {/*expand med 12*/}
+  }
 
   return (
       <body className="new-style page-proxiedContentWrapper pageType-ContentPage template-pages-layout-landingLayout2Page pageLabel-proxiedContentWrapper smartedit-page-uid-proxiedContentWrapper smartedit-page-uuid-eyJpdGVtSWQiOiJwcm94aWVkQ29udGVudFdyYXBwZXIiLCJjYXRhbG9nSWQiOiJjbkNvbnRlbnRDYXRhbG9nIiwiY2F0YWxvZ1ZlcnNpb24iOiJPbmxpbmUifQ== smartedit-catalog-version-uuid-cnContentCatalog/Online language-no">
@@ -34,10 +39,10 @@ export default function Home() {
           </div>
 
           <div id="__next">
-            <div id="next-app-element" className="next-content-wrapper">
-              <div className="py-8 sm:py-10 md:py-14 px:4 relative">
-                <div className="top-0 absolute w-full h-[calc(100%-32px)] sm:h-[calc(100%-40px)] md:h-[calc(100%-56px)] bg-jernia-image">
-                  <div className="relative z-10 mx-auto px-4 md:px-8 xl:container">
+            <div id="next-app-element" className="next-content-wrapper ">
+              <div className="py-8 sm:py-10 md:py-14 px:4 relative  ">
+                <div className="top-0 absolute w-full h-[calc(100%-32px)] sm:h-[calc(100%-40px)] md:h-[calc(100%-56px)] bg-primary-100"></div>
+                  <div className="relative z-10 mx-auto px-4 md:px-8 xl:container  bg-jernia-image">
                      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
                           <div className="md:col-span-10 lg:col-span-12">{/*Info området*/}
                             <h1 className="text-3xl">Fargeradgiver</h1>
@@ -46,33 +51,31 @@ export default function Home() {
                                 Lorem impsumLorem impsumLorem impsumLorem impsumLorem impsumLorem impsumLorem impsumLorem
                                 impsumLorem impsumLorem impsumLorem impsumLorem impsumLorem
                                 impsumLorem impsumLorem impsumLorem impsumLorem impsumLorem impsumLorem impsumLorem
+                                impsumLorem impsumLorem impsumLorem impsumLorem impsumLorem impsumLorem impsumLorem
                                 impsumLorem impsumLorem impsumLorem impsumLorem
                               </p>
                               </div>
                           </div>
                      </div>
                   </div>
-                </div>
               </div>
             </div>
-
           </div>
-          <div className="px:4 bg-primary-300 py-8 md:py-14">
 
-          </div>
-          <div className="flex flex-wrap w-full justify-around items-start bg-primary-100">
+          <div className="px:4 bg-primary-300 py-8 md:py-14 ">
+          <div className="flex flex-wrap w-full justify-around items-start rounded">
             <button
-                className={`px-4 py-2 order-2 lg:hidden ${visibleModule === "modul2" ? "bg-blue-700" : "bg-blue-500"} text-white rounded`}
+                className={`px-4 py-2 border-2 lg:hidden ${visibleModule === "modul2" ? "bg-blue-700" : "bg-blue-500"} text-white rounded`}
                 onClick={() => setVisibleModule("modul2")}>
               Velg bilde
             </button>
             <button
-                className={`px-4 py-2 order-2 lg:hidden ${visibleModule === "modul3" ? "bg-blue-700" : "bg-blue-500"} text-white rounded`}
+                className={`px-4 py-2 border-2 lg:hidden ${visibleModule === "modul3" ? "bg-blue-700" : "bg-blue-500"} text-white rounded`}
                 onClick={() => setVisibleModule("modul3")}>
               Velg farge
             </button>
             <button
-                className="px-4 py-2 order-2 lg:hidden bg-green-500 text-white rounded">
+                className="px-4 py-2 border-2 lg:hidden bg-green-500 text-white rounded">
               Kjøp
             </button>
 
@@ -90,8 +93,7 @@ export default function Home() {
               <div className={`relative pb-[100%] ${visibleModule === "modul3" ? "" : "hidden"} lg:block`}>
                 <div className={`absolute top-0 left-0 right-0 bottom-0 bg-white rounded-lg shadow p-4 overflow-hidden`}>
 
-                  <ColorPicker onColorSelect={(selectedColor: Color | null) => setColor(selectedColor)}/>
-
+                  {/*Få inn recently used og favorites*/}
                 </div>
               </div>
             </div>
@@ -109,7 +111,7 @@ export default function Home() {
                             alt="Uploaded image"
                             className="rounded-lg"
                             sizes="100vw"
-                            recolor={['every wall and walls and portion of wall visible in the room', color?.hex]}
+                            recolor={['every wall and walls and portion of wall visible in the room', formattedHex]}
                         />
                     )}
                     {cloudinaryResult && !color && (
@@ -127,54 +129,11 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <section className="lg:mt-4">
-            <div className="py-8 pb-0 mx-auto px-4 md:px-8 xl:container">
-              <div className="flex">
-                <div className="max-w-full flex-grow">
-                  {/* Legg til filter osv */}
-                  <div className="mb-8">
-                    <div className="mb-8 grid grid-cols-2 gap-2 md:grid-cols-3">
+          </div>
 
-                      <article
-                          className="group transform cursor-pointer space-y-4 rounded transition-all w-full bg-neutral-300 p-2 sm:p-4">
-                        <a href="" className="relative- flex h-full flex-col">
-                          <figure
-                              className="relative w-full aspect-square rounded overflow-hidden mb-4 bg-jernia-farge">{/*Referer til fargen her. Den er foreløpig et bg objekt i globals.css*/}
-                            <img className="w-full" alt="Fargegjengivning av undefined" src="./blob-large-gray-1.png">
-                            </img>
-                          </figure>
-                        </a>
-                      </article>
 
-                      <article
-                          className="group transform cursor-pointer space-y-4 rounded transition-all w-full bg-neutral-300 p-2 sm:p-4">
-                        <a href="" className="relative- flex h-full flex-col">
-                          <figure
-                              className="relative w-full aspect-square rounded overflow-hidden mb-4 bg-jernia-farge">{/*Referer til fargen her. Den er foreløpig et bg objekt i globals.css*/}
-                            <img className="w-full" alt="Fargegjengivning av undefined" src="./blob-large-gray-1.png">
-                            </img>
-                          </figure>
-                        </a>
-                      </article>
 
-                      <article
-                          className="group transform cursor-pointer space-y-4 rounded transition-all w-full bg-neutral-300 p-2 sm:p-4">
-                        <a href="" className="relative- flex h-full flex-col">
-                          <figure
-                              className="relative w-full aspect-square rounded overflow-hidden mb-4 bg-jernia-farge">{/*Referer til fargen her. Den er foreløpig et bg objekt i globals.css*/}
-                            <img className="w-full" alt="Fargegjengivning av undefined" src="./blob-large-gray-1.png">
-                            </img>
-                          </figure>
-                        </a>
-                      </article>
-
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </section>
+          <ColorPicker onColorSelect={(selectedColor) => setColor(selectedColor)} />
 
         </div>
   </main>
