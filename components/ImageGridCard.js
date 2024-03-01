@@ -32,7 +32,7 @@ const ImageGridCard = ({ onPictureSelect }) =>  {
             {images.map((src, index) => (
                 <div
                     key={index}
-                    className={`w-full rounded-lg flex items-center justify-center overflow-hidden relative border-2 ${selected === index ? 'border-black' : 'border-transparent'}  hover:border-blue-500`}
+                    className={`w-full rounded-lg flex items-center justify-center overflow-hidden relative border-2 ${selected === index ? 'border-black' : 'border-transparent'}  hover:border-gray-500`}
                     onClick={() => handleImageClick(index)}
                 >
                     {/* <Image src={src} alt={`Image ${index + 1}`} layout="responsive" width={50} height={50}

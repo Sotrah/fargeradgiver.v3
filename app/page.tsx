@@ -1,5 +1,6 @@
 "use client";
 import ColorPicker from "../components/ColorPicker";
+import RecentColorPicker from "../components/RecentColorPicker";
 import {ColorType} from "@/components/ColorType";
 import ImageGridCard from "../components/ImageGridCard";
 import React, { useState } from "react";
@@ -16,8 +17,8 @@ export default function Home() {
   //   public_id: string;
   // };
 
-  const [color, setColor] = useState<ColorType | null>(null);
-  const formattedHex = color ? formatHexColor(color.hex) : null;
+  const [selectedColor, setSelectedColor] = useState<ColorType | null>(null);
+  const formattedHex = selectedColor ? formatHexColor(selectedColor.hex) : null;
   const [visibleModule, setVisibleModule] = useState("modul2");
   const [loading, setLoading] = useState(false);
 
@@ -31,7 +32,7 @@ export default function Home() {
   }
   const handleColorSelect = (selectedColor: ColorType | null) => {
     setLoading(true);
-    setColor(selectedColor)
+    setSelectedColor(selectedColor)
   }
 
   const showSpinner = useSpinDelay(loading, { delay: 300, minDuration: 700 });
@@ -107,7 +108,7 @@ export default function Home() {
               <div className={`relative pb-[100%] ${visibleModule === "modul3" ? "" : "hidden"} lg:block`}>
                 <div
                     className={`absolute top-0 left-0 right-0 bottom-0 bg-white rounded-lg shadow p-4 overflow-hidden`}>
-
+                      <RecentColorPicker onColorSelect={handleColorSelect} selectedColor={selectedColor} />
                   {/*Få inn recently used og favorites*/}
                 </div>
               </div>
@@ -120,8 +121,8 @@ export default function Home() {
                   <div className={`${showSpinner ? "opacity-50" : ""} w-full h-full`}>
                     {/* CldImage is documented here: https://next.cloudinary.dev/cldimage/configuration
 
-                    If there is an image and a color selected, transform it with Recolor */}
-                    {imageToTransform && color && (
+                    If there is an image and a selectedColor selected, transform it with Recolor */}
+                    {imageToTransform && selectedColor && (
                         <CldImage
                             placeholder="empty"
                             onLoad={() => setLoading(false)}
@@ -134,7 +135,7 @@ export default function Home() {
                             recolor={['every wall and walls', formattedHex]}
                         />
                     )}
-                    {imageToTransform && !color && (
+                    {imageToTransform && !selectedColor && (
                         <CldImage
                             placeholder="empty"
                             onLoad={() => setLoading(false)}
@@ -162,7 +163,7 @@ export default function Home() {
         </div>
 
         <div>
-        <ColorPicker onColorSelect={handleColorSelect}/>
+        <ColorPicker onColorSelect={handleColorSelect} selectedColor={selectedColor} />
           {/*Loading funker kun første gangen?*/}
         </div>
 

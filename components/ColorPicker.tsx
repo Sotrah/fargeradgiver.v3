@@ -2,13 +2,19 @@ import React, { useState } from 'react';
 import colourData from './../colours_dump.json';
 import { ColorType } from "@/components/ColorType";
 
-const ColorPicker: React.FC<{ onColorSelect: (color: ColorType | null) => void }> = ({ onColorSelect }) => {
-    const [selectedColor, setSelectedColor] = useState<ColorType | null>(null);
+const ColorPicker: React.FC<{ selectedColor: ColorType | null, onColorSelect: (color: ColorType | null) => void }> = ({ selectedColor, onColorSelect }) => {
     const [displayCount, setDisplayCount] = useState(16);
 
     const handleColorClick = (colorItem: ColorType) => {
-        setSelectedColor(prevSelectedColor => prevSelectedColor?.hex === colorItem.hex ? null : colorItem);
-        onColorSelect(colorItem);
+        if (selectedColor && selectedColor.hex === colorItem.hex) {
+            console.log('Deselecting color');
+            onColorSelect(null); // remove selected color
+            return;
+        }
+        else {
+            onColorSelect(colorItem); // "Feed" the selected color to the parent component
+            console.log('Selected color:', colorItem);
+        }
     };
 
     const handleShowMore = () => {
@@ -21,7 +27,7 @@ const ColorPicker: React.FC<{ onColorSelect: (color: ColorType | null) => void }
                 {colourData.slice(0, displayCount).map((colorItem, index) => (
                     <button
                         key={index}
-                        className={`w-full rounded-lg flex items-center justify-center overflow-hidden relative border-2 ${selectedColor?.hex === colorItem.hex ? 'border-blue-500' : 'border-transparent'}`}
+                        className={`w-full rounded-lg flex items-center justify-center overflow-hidden relative border-2 ${selectedColor?.hex === colorItem.hex ? 'border-black' : 'border-transparent' } hover:border-gray-500`}
                         style={{ backgroundColor: colorItem.hex, aspectRatio: '1/1' }}
                         onClick={() => handleColorClick(colorItem)}
                         aria-label={`Select ${colorItem.shortName} color`}
