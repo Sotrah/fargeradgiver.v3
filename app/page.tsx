@@ -103,8 +103,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="lg:w-1/3 w-full lg:order-3 order-2 px-2 mb-4">
-
+            <div className="md:w-1/3 w-full md:order-3 order-3 px-2 pt-6 mb-4 bg-primary-300">
               <div className={`relative pb-[100%] ${visibleModule === "modul3" ? "" : "hidden"} lg:block`}>
                 <div
                     className={`absolute top-0 left-0 right-0 bottom-0 bg-white rounded-lg shadow p-4 overflow-hidden`}>
