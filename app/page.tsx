@@ -81,12 +81,12 @@ export default function Home() {
             <button
                 className={`px-4 py-2 order-2 md:hidden ${visibleModule === "modul2" ? "bg-blue-700" : "bg-blue-500"} text-white rounded`}
                 onClick={() => setVisibleModule("modul2")}>
-              Vemd bilde
+              Velg bilde
             </button>
             <button
                 className={`px-4 py-2 order-2 md:hidden ${visibleModule === "modul3" ? "bg-blue-700" : "bg-blue-500"} text-white rounded`}
                 onClick={() => setVisibleModule("modul3")}>
-              Vemd farge
+              Nylig brukte farger
             </button>
             <button
                 className="px-4 py-2 order-2 md:hidden bg-green-500 text-white rounded">
