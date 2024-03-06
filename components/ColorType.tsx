@@ -19,7 +19,3 @@ export interface ColorType{
         applicationArea: string | null;
     }[];
 }
-// utils.js or utils.ts
-export function formatHexColor(hexColor: string): string {
-    return hexColor.startsWith('#') ? hexColor.slice(1) : hexColor;
-}

@@ -4,7 +4,7 @@ import RecentColorPicker from "../components/RecentColorPicker";
 import {ColorType} from "@/components/ColorType";
 import ImageGridCard from "../components/ImageGridCard";
 import React, { useState } from "react";
-import {formatHexColor} from '@/components/Utils';
+import {formatHexColor} from "@/components/Utils";
 import {useSpinDelay} from "spin-delay";
 import {ScaleLoader} from "react-spinners";
 import CldImage from "../components/CldImage";
