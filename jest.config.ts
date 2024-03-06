@@ -3,16 +3,30 @@
  * https://jestjs.io/docs/configuration
  */
 
-import type {Config} from 'jest';
-import nextJest from 'next/jest.js'
+import nextJest from "next/jest";
 
 const createJestConfig = nextJest({
-  // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
-  dir: './',
-})
-const config: Config = {
+    // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
+    dir: './',
+});
 
+const customJestConfig = {
+    setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+    testEnvironment: 'jsdom',
+    moduleNameMapper: {
+        '^@/components/(.*)$': '<rootDir>/components/$1',
+        '^@/app/(.*)$': '<rootDir>/app/$1',
+    },
+    // Add other configurations here
+    clearMocks: true,
+    collectCoverage: true,
+    coverageDirectory: "coverage",
+    coverageProvider: "v8",
+    // You can uncomment and customize the other options as needed
+};
 
+// Use the createJestConfig function with your customJestConfig
+module.exports = createJestConfig(customJestConfig);
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
@@ -23,16 +37,16 @@ const config: Config = {
   // cacheDirectory: "C:\\Users\\Joacim\\AppData\\Local\\Temp\\jest",
 
   // Automatically clear mock calls, instances, contexts and results before every test
-  clearMocks: true,
+  //clearMocks: true,
 
   // Indicates whether the coverage information should be collected while executing the test
-  collectCoverage: true,
+  //collectCoverage: true,
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
   // collectCoverageFrom: undefined,
 
   // The directory where Jest should output its coverage files
-  coverageDirectory: "coverage",
+  //coverageDirectory: "coverage",
 
   // An array of regexp pattern strings used to skip coverage collection
   // coveragePathIgnorePatterns: [
@@ -40,7 +54,7 @@ const config: Config = {
   // ],
 
   // Indicates which provider should be used to instrument code for coverage
-   coverageProvider: "v8",
+  // coverageProvider: "v8",
 
   // A list of reporter names that Jest uses when writing coverage reports
   // coverageReporters: [
@@ -97,11 +111,9 @@ const config: Config = {
   // ],
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
-   moduleNameMapper: {
-     '^@/components/(.*)$': '<rootDir>/components/$1',
-     '^@/app/(.*)$': '<rootDir>/app/$1',
-
-   },
+   //moduleNameMapper: {
+    // '^@/components/(.*)$': '<rootDir>/components/$1',
+    // '^@/app/(.*)$': '<rootDir>/app/$1',
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],
@@ -148,7 +160,7 @@ const config: Config = {
   // setupFiles: [],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+  //setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   // slowTestThreshold: 5,
@@ -157,7 +169,7 @@ const config: Config = {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-   testEnvironment: "jsdom",
+    // testEnvironment: "jsdom",
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},
@@ -205,7 +217,7 @@ const config: Config = {
 
   // Whether to use watchman for file crawling
   // watchman: true,
-};
+//};
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
-export default createJestConfig(config)
+//module.exports = createJestConfig(customJestConfig);

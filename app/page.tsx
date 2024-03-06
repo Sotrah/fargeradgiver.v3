@@ -38,16 +38,16 @@ export default function Home() {
   const showSpinner = useSpinDelay(loading, { delay: 300, minDuration: 700 });
 
   return (
-      <body className="new-style page-proxiedContentWrapper pageType-ContentPage template-pages-layout-landingLayout2Page pageLabel-proxiedContentWrapper smartedit-page-uid-proxiedContentWrapper smartedit-page-uuid-eyJpdGVtSWQiOiJwcm94aWVkQ29udGVudFdyYXBwZXIiLCJjYXRhbG9nSWQiOiJjbkNvbnRlbnRDYXRhbG9nIiwiY2F0YWxvZ1ZlcnNpb24iOiJPbmxpbmUifQ== smartedit-catalog-version-uuid-cnContentCatalog/Online language-no">
-      <div className="c-site-header"> {/*Navbar opplegg*/}
-        <div className="container">
-          <div className="c-site-header__top text-white text-2xl">
-            <h1></h1>
+      <div className="new-style page-proxiedContentWrapper pageType-ContentPage template-pages-layout-landingLayout2Page pageLabel-proxiedContentWrapper smartedit-page-uid-proxiedContentWrapper smartedit-page-uuid-eyJpdGVtSWQiOiJwcm94aWVkQ29udGVudFdyYXBwZXIiLCJjYXRhbG9nSWQiOiJjbkNvbnRlbnRDYXRhbG9nIiwiY2F0YWxvZ1ZlcnNpb24iOiJPbmxpbmUifQ== smartedit-catalog-version-uuid-cnContentCatalog/Online language-no">
+        <div className="c-site-header"> {/*Navbar opplegg*/}
+          <div className="container">
+            <div className="c-site-header__top text-white text-2xl">
+              <h1></h1>
+            </div>
           </div>
         </div>
-      </div>
 
-      <main className="main-responsive-padding px-20 mm-page mm-slideout bg-primary-100">
+      <div className="main-responsive-padding px-20 mm-page mm-slideout bg-primary-100">
         <div className="w-full">
 
 
@@ -165,8 +165,8 @@ export default function Home() {
           <ColorPicker onColorSelect={handleColorSelect} selectedColor={selectedColor} />
         </div>
 
-      </main>
-</body>
+      </div>
+</div>
 )
   ;
 }
