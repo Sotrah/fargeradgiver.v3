@@ -162,8 +162,7 @@ export default function Home() {
         </div>
 
         <div>
-        <ColorPicker onColorSelect={handleColorSelect} selectedColor={selectedColor} />
-          {/*Loading funker kun første gangen?*/}
+          <ColorPicker onColorSelect={handleColorSelect} selectedColor={selectedColor} />
         </div>
 
       </main>
