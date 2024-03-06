@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=dj6mfsxnu jest",
+    "test": "jest",
     "test:watch": "jest --watch"
   },
   "dependencies": {
