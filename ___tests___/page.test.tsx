@@ -16,4 +16,5 @@ describe('Page component', () => {
         const heading = await screen.findByText('Visualiseringsverktøy');
         expect(heading).toBeInTheDocument();
     });
+    //Legg til handleColor og handleImage her?
 });
