@@ -25,11 +25,12 @@ const RecentColorPicker: React.FC<{ selectedColor: ColorType | null, onColorSele
         if (selectedColor && selectedColor.hex === colorItem.hex) {
             console.log('Deselecting color');
             onColorSelect(null); // remove selected color
-            return;
+            return false;
         }
         else {
             onColorSelect(colorItem); // "Feed" the selected color to the parent component
             console.log('Selected color:', colorItem);
+            return true;
         }
     };
 
